@@ -5,6 +5,7 @@ import GithubLogo from "./icons/github-logo";
 import MenuIcon from "./icons/menu-icon";
 import { useState } from "react";
 import exp from "constants";
+import SearchIcon from "./icons/search-icon";
 
 export default function Navbar() {
   const [expand, isExpanded] = useState(false);
@@ -26,12 +27,13 @@ export default function Navbar() {
             className={`hover:bg-secondary-color rounded-lg`}
             onClick={clickAction}
           >
-            <MenuIcon />
+            <SearchIcon />
           </button>
         </div>
       </div>
+
       <div
-        className={`${
+        className={` ${
           expand ? "block" : "hidden"
         }  bg-secondary-dark-color ring-theme-dark-color ring-2 rounded-2xl mt-2`}
       >
