@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-theme-dark-color max-w-full max-h-20 rounded-b-lg items-center">
+    <nav className="fixed top-0 bg-theme-dark-color max-w-lg w-full max-h-20 rounded-b-lg items-center">
       <div className="flex flex-row justify-between px-5 py-5 max-h-20">
         <div className="flex items-center">
           <a href="/">

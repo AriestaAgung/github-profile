@@ -25,7 +25,7 @@ export default function RepoCard({
           </div>
         </div>
         <div className="">
-          <button className="text-sm border-2 border-theme-dark-color px-2 py-1 rounded-lg">
+          <button className="text-sm border-2 border-secondary-dark-color px-2 py-1 rounded-lg hover:bg-secondary-dark-color hover:text-main-color hover:border-none hover:border-secondary-dark-color">
             Detail
           </button>
         </div>

@@ -5,14 +5,64 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main>
+    <main className="mt-24 mb-24">
       <Navbar></Navbar>
-      <RepoCard
-        username="User"
-        repoName="Repository"
-        stars="4k"
-        desc="This is a user repository"
-      />
+      <div>
+        <RepoCard
+          username="User"
+          repoName="Repository"
+          stars="4k"
+          desc="This is a user repository"
+        />
+        <RepoCard
+          username="User"
+          repoName="Repository"
+          stars="4k"
+          desc="This is a user repository"
+        />
+        <RepoCard
+          username="User"
+          repoName="Repository"
+          stars="4k"
+          desc="This is a user repository"
+        />
+        <RepoCard
+          username="User"
+          repoName="Repository"
+          stars="4k"
+          desc="This is a user repository"
+        />
+        <RepoCard
+          username="User"
+          repoName="Repository"
+          stars="4k"
+          desc="This is a user repository"
+        />
+        <RepoCard
+          username="User"
+          repoName="Repository"
+          stars="4k"
+          desc="This is a user repository"
+        />
+        <RepoCard
+          username="User"
+          repoName="Repository"
+          stars="4k"
+          desc="This is a user repository"
+        />
+        <RepoCard
+          username="User"
+          repoName="Repository"
+          stars="4k"
+          desc="This is a user repository"
+        />
+        <RepoCard
+          username="User"
+          repoName="Repository"
+          stars="4k"
+          desc="This is a user repository"
+        />
+      </div>
       <BottomBar />
     </main>
   );
