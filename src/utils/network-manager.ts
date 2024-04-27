@@ -5,7 +5,6 @@ export const URL_REPO_LIST = "repositories";
 
 class NetworkManager {
   constructor() {}
-  query = new QueryClient();
   async getWithRequest(endpoint: string, request: any) {
     if (request == null) {
       const res = await fetch(BASE_URL + endpoint, {
