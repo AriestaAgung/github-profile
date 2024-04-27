@@ -1,5 +1,3 @@
-export async function NetworkManager(request: any) {
-    const res = await fetch("", request)
 
 export const BASE_URL = "https://api.github.com/"
 export const URL_REPO_LIST = "repositories"
@@ -30,3 +28,6 @@ class NetworkManager {
         return res.json()
     }
 }
+
+const networkMgr = new NetworkManager()
+export default networkMgr
