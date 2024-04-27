@@ -5,11 +5,12 @@ export const URL_REPO_LIST = "repositories"
 class NetworkManager {
     
     constructor(){}
+
     async getWithRequest(endpoint: string, request: any) {
         if (request == null){
             const res = await fetch(BASE_URL + endpoint, {
                 headers: {
-                    'Authorization':'Bearer ' + process.env.BASE_URL,
+                    'Authorization':'Bearer ' + process.env.API_KEY,
                 },
             })
             if(!res.ok) {
@@ -18,6 +19,7 @@ class NetworkManager {
             return res.json()    
         } 
     }
+    
     async get(endpoint: string) {
         const res =  await fetch(BASE_URL + endpoint)
         if (!res.ok) {
