@@ -10,30 +10,13 @@ type RepoCardProp = {
 
 export default function RepoCard({ data }: RepoCardProp) {
   const [loading, isLoading] = useState(true);
+
   useEffect(() => {
     isLoading(false);
-  }, data);
-  if (data === undefined) {
-    return (
-      <div className="mx-5 my-5 py-5 px-5 max-h-40 max-w-full bg-main-color rounded-lg border-theme-dark-color border-2">
-        <div className="flex flex-row justify-between items-center text-theme-dark-color">
-          <div className="flex flex-col gap-2 animate-pulse" id="repo_title">
-            <p className="font-bold">Repositories</p>
-            <p className="text-sm">Description</p>
-            <div className="flex flex-row gap-2 ">
-              <StarIcon additionalClass="text-sm" />
-              <p className="text-sm">4K</p>
-            </div>
-          </div>
-          <div className="">
-            <button className="text-sm border-2 border-secondary-dark-color px-2 py-1 rounded-lg hover:bg-secondary-dark-color hover:text-main-color hover:border-none hover:border-secondary-dark-color">
-              Detail
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  } else if (loading == true) {
+  }, [data]);
+
+  if (loading) {
+    console.log("LOADING_ERROR");
     return (
       <>
         <SkeletonRepoCard />
@@ -41,17 +24,41 @@ export default function RepoCard({ data }: RepoCardProp) {
         <SkeletonRepoCard />
       </>
     );
+  } else if (!data || data.length === 0) {
+    console.log("LOADING_ERROR_NODATA");
+    return (
+        <>
+      <SkeletonRepoCard />
+      <SkeletonRepoCard />
+      <SkeletonRepoCard />
+    </>
+    );
+  } else if (data && data.length > 1) {
+    return (
+      <>
+        { data.map((item) =>
+          <Link key={item.id} href={`${item.html_url}`}>
+            <RepoCardView item={item} />
+          </Link>)
+        }
+      </>
+    );
   }
-  return data.map((item, idx) => {
-    <Link href={`${item.html_url}`} key={idx}>
+
+  
+}
+
+export function RepoCardView({ item }: { item: GithubRepos }) {
+  return (
+    <>
       <div className="mx-5 my-5 py-5 px-5 max-h-40 max-w-full bg-main-color rounded-lg border-theme-dark-color border-2">
         <div className="flex flex-row justify-between items-center text-theme-dark-color">
           <div className="flex flex-col gap-2" id="repo_title">
-            <p className="font-bold">{`${item.owner}/${item.name}`}</p>
+            <p className="font-bold">{`${item.full_name}`}</p>
             <p className="text-sm">{item.description}</p>
             <div className="flex flex-row gap-2 ">
-              <StarIcon additionalClass="text-sm" />
-              <p className="text-sm">{item.starred_url}</p>
+              <StarIcon additionalClass="text-lg" />
+              <p className="text-sm">{`${item.owner.starred_url}`}</p>
             </div>
           </div>
           <div className="">
@@ -61,8 +68,8 @@ export default function RepoCard({ data }: RepoCardProp) {
           </div>
         </div>
       </div>
-    </Link>;
-  });
+    </>
+  );
 }
 
 export function SkeletonRepoCard() {
