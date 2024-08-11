@@ -1,4 +1,4 @@
-export default interface RepoOwner {
+interface RepoOwner {
   login: string;
   id: number;
   node_id: string;
