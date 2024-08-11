@@ -39,6 +39,14 @@ export default function RepoCard({data}: RepoCardProp) {
         );
     } else if (data && data.length > 1) {
         const currentData = getPaging(paging + limit, data);
+        const loadMoreElement = () => {
+            if (data.length > currentData.length) {
+                return <button onClick={loadAction} className={`bg-secondary-dark-color p-3 rounded-md text-white`}>Load
+                    More...
+                </button>
+            }
+            return <>End</>
+        }
         return (
             <div>
                 {
@@ -49,9 +57,10 @@ export default function RepoCard({data}: RepoCardProp) {
                     )
                 }
                 <div className={'flex justify-center items-center'}>
-                    <button onClick={loadAction} className={`bg-secondary-dark-color p-3 rounded-md text-white`}>Load
-                        More...
-                    </button>
+                    {
+                     loadMoreElement()
+                    }
+
                 </div>
             </div>
         );
